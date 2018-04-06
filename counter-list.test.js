@@ -3,11 +3,19 @@ import { shallow, mount } from 'enzyme'
 import CounterList from './counter-list'
 
 describe('CounterList', () => {
-    it('just for demo!', () => {
-        const shallowWrapper = shallow(<CounterList /> )
-        const mountWrapper = mount(<CounterList /> )
+    it('should render two counters by default', () => {
+        const wrapper = shallow(<CounterList /> )
 
-        console.log('shallow HTML', shallowWrapper.debug())
-        console.log('mount HTML', mountWrapper.debug())
+        const counters = wrapper.find('Counter')
+        expect(counters.length).toEqual(2)
+    })
+
+    it('it can add more counter when we click the button', () => {
+        const wrapper = shallow(<CounterList /> )
+
+        const btn = wrapper.find('button')
+        btn.simulate('click')
+        const counters = wrapper.find('Counter')
+        expect(counters.length).toEqual(3)
     })
 })
