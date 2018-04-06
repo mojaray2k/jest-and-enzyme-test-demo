@@ -2,3 +2,5 @@
 ## Getting Started
 `yarn install` 
 `yarn run test`
+## To Run Tests Automatically
+`yarn test --watch`
