@@ -1,0 +1,33 @@
+{
+  "name": "jest-and-enzyme-test-demo",
+  "version": "1.0.0",
+  "description": "This is all about setting up react tests for enzyme and jest",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mojaray2k/jest-and-enzyme-test-demo.git"
+  },
+  "author": "Amen Ra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mojaray2k/jest-and-enzyme-test-demo/issues"
+  },
+  "homepage": "https://github.com/mojaray2k/jest-and-enzyme-test-demo#readme",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "jest": "^21.2.1",
+    "prettier": "^1.9.2"
+  }
+}
