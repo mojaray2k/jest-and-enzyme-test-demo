@@ -12,11 +12,7 @@ describe('fetchUser', () => {
       const url = 'https://jsonplaceholder.typicode.com/users/1'
   
       fetchMock.getOnce(url, dummyUser)
-
-      const respone = await fetchUser(1)
-
-      expect(respone).toEqual(dummyUser)
-  
-      //await expect(fetchUser(1)).resolves.toEqual(dummyUser)
+ 
+      await expect(fetchUser(1)).resolves.toEqual(dummyUser)
     })
   })
