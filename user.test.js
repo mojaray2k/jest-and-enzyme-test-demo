@@ -15,6 +15,11 @@ const dummyUser = {
   name: 'Jack Franklin',
   website: 'https://javascriptplayground.com',
 }
+const anotherDummyUser = {
+    id: 2,
+    name: 'Alice Bob',
+    website: 'https://bbc.com',
+  }
 
 const mockFetchUserResponse = user =>
   jest
@@ -38,8 +43,24 @@ describe('User', () => {
 
     await nextTick()
     wrapper.update()
-
     expect(wrapper.find('h4').text()).toEqual(dummyUser.name)
     expect(wrapper.find('p').text()).toContain(dummyUser.website)
+  })
+
+  it('makes a new HTTP request when the ID prop changes', async () => {
+    jest.spyOn(api, 'fetchUser')
+        .mockImplementationOnce(() => Promise.resolve(anotherDummyUser))
+        .mockImplementationOnce(() => Promise.resolve(dummyUser))
+
+    const wrapper = shallow(<User id={1} />)
+    expect(api.fetchUser).toHaveBeenCalled()
+    expect(api.fetchUser).toHaveBeenCalledWith(1)    
+    wrapper.setProps({ id: 2 })
+    
+    await nextTick()
+    wrapper.update()
+    
+    expect(wrapper.find('h4').text()).toEqual(anotherDummyUser.name)
+    expect(wrapper.find('p').text()).toContain(anotherDummyUser.website)
   })
 })
