@@ -7,7 +7,15 @@ class User extends Component {
   }
 
   componentDidMount() {
-    fetchUser(this.props.id).then(user => this.setState({ user }))
+    fetchUser(this.props.id).then(user => 
+      this.setState({ user }))
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.id !== prevProps.id) {
+      fetchUser(this.props.id).then(user =>
+      this.setState({ user }))
+    }
   }
 
   render() {

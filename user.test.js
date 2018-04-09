@@ -49,14 +49,16 @@ describe('User', () => {
 
   it('makes a new HTTP request when the ID prop changes', async () => {
     jest.spyOn(api, 'fetchUser')
-        .mockImplementationOnce(() => Promise.resolve(anotherDummyUser))
         .mockImplementationOnce(() => Promise.resolve(dummyUser))
+        .mockImplementationOnce(() => Promise.resolve(anotherDummyUser))
+        
 
     const wrapper = shallow(<User id={1} />)
     expect(api.fetchUser).toHaveBeenCalled()
     expect(api.fetchUser).toHaveBeenCalledWith(1)    
     wrapper.setProps({ id: 2 })
-    
+    expect(api.fetchUser).toHaveBeenCalledWith(2)  
+
     await nextTick()
     wrapper.update()
     
